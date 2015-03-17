@@ -161,7 +161,9 @@ public class Wheel {
 			motorControl.setVelocity(0, -adjustedPower);
 		} else {
 			motorControl.setVelocity(0, adjustedPower);
-		}		
+		}
+		
+//		System.out.println(motorControl.getCurrent(0));
 	}
 	
 	public int getWantEncoder() {

@@ -92,8 +92,8 @@ public class ColeBotTest implements ControllerListener, EventListener {
 		logAppender = LogAppender.construct(controller);
 		LOGGER.addAppender(logAppender);
 
-		leftWheel = new Wheel(298807, true, 0);
-		rightWheel = new Wheel(298806, false, 0);
+		leftWheel = new Wheel(298807, false, 0);
+		rightWheel = new Wheel(298806, true, 0);
 		wheels = new Wheels(leftWheel, rightWheel, 200, 2000, 100);
 
 		enforceMinLoopInterval = new EnforceMinLoopInterval(LOOP_INTERVAL);
@@ -110,11 +110,24 @@ public class ColeBotTest implements ControllerListener, EventListener {
 		// kP:0.00140, kI:0.00010, v:0.00001, d:2000 works really well!
 		// colebot v2
 		// kP:0.00700, kI:0.00080
-		tiltPID = new TiltPID(.007, 0.0008, .00001, 2000);
+		// topheavy colebot
+		// kP:0.00400, kI:0.00080, v:0.00001  still not right
+		// top heavy version at camp tech
+		//.00001, 0.00004, .0000005, 2000
+		tiltPID = new TiltPID(.000001, 0.000004, .0000005, 2000);
 		// :8.00000, kD:1.50000, kV:0.12000q
 		// kP:4.00000, kD:1.20000, kV:0.11000 camp techer's alue
 		// kP:3.80000, kD:1.00000, kV:0.10000
-		balanceLogic = new BalanceLogic(3.8, 1, .1, .04, 100);
+		// for big wheeled colebot (3.8, 1, .1, .04, 100)
+		// for top-heavy colebot (4.2, .95, .085, .04, 100)
+
+		// new colebot camptech2014
+		//kP:8.00000, kD:1.00000, kV:0.10000, kE:0.00000
+		// works!
+		// 6.00000, kD:1.00000, kV:0.07000, kE:0.04000
+		// better
+		//kP:6.00000, kD:0.85000, kV:0.07000, kE:0.04000
+		balanceLogic = new BalanceLogic(6, .85, .07, .04, 100);
 		resetLogic = new ResetLogic(40, 100, 1000, 1000);
 
 		tiltSensor = new TiltSensor();
@@ -263,6 +276,7 @@ public class ColeBotTest implements ControllerListener, EventListener {
 			}
 		} else {
 			wheels.setPower(power);
+//			System.out.println(power);
 		}
 	}
 
