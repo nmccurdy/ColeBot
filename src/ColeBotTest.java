@@ -129,8 +129,8 @@ public class ColeBotTest implements ControllerListener, EventListener {
 		//kP:6.00000, kD:0.85000, kV:0.07000, kE:0.04000
 		
 		// new chain driven one
-		// kp: 4, .02, .01, 0
-		balanceLogic = new BalanceLogic(4, .02, .01, 0, 100);
+		// kp: around 4-5 (more towards 4)works, .02, .01, 0
+		balanceLogic = new BalanceLogic(4.3, .2, .03, 0, 100);
 		resetLogic = new ResetLogic(40, 100, 1000, 1000);
 
 		tiltSensor = new TiltSensor();

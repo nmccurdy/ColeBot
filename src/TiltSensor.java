@@ -35,7 +35,7 @@ public class TiltSensor {
 
 	public void calcAngle() throws PhidgetException {
 		double accX = spatial.getAcceleration(0);
-		double velocity = -getPitchVelocity();
+		double velocity = getPitchVelocity();
 		
 
 		long time = System.nanoTime();
@@ -94,7 +94,7 @@ public class TiltSensor {
 	}
 	
 	public double getPitchVelocity() throws PhidgetException {
-		return spatial.getAngularRate(1);
+		return -spatial.getAngularRate(1);
 	}
 
 	public double getPitchAngleZero() {
