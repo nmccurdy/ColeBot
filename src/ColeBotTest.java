@@ -92,8 +92,8 @@ public class ColeBotTest implements ControllerListener, EventListener {
 		logAppender = LogAppender.construct(controller);
 		LOGGER.addAppender(logAppender);
 
-		leftWheel = new Wheel(298807, false, 0);
-		rightWheel = new Wheel(298806, true, 0);
+		leftWheel = new Wheel(298807, true, 0);
+		rightWheel = new Wheel(298806, false, 0);
 		wheels = new Wheels(leftWheel, rightWheel, 200, 2000, 100);
 
 		enforceMinLoopInterval = new EnforceMinLoopInterval(LOOP_INTERVAL);
@@ -127,7 +127,10 @@ public class ColeBotTest implements ControllerListener, EventListener {
 		// 6.00000, kD:1.00000, kV:0.07000, kE:0.04000
 		// better
 		//kP:6.00000, kD:0.85000, kV:0.07000, kE:0.04000
-		balanceLogic = new BalanceLogic(6, .85, .07, .04, 100);
+		
+		// new chain driven one
+		// kp: 4, .02, .01, 0
+		balanceLogic = new BalanceLogic(4, .02, .01, 0, 100);
 		resetLogic = new ResetLogic(40, 100, 1000, 1000);
 
 		tiltSensor = new TiltSensor();
@@ -153,7 +156,7 @@ public class ColeBotTest implements ControllerListener, EventListener {
 	public void runLoop() throws PhidgetException, InterruptedException {
 		while (running) {
 			tiltSensor.calcAngle();
-			// System.out.println(tiltSensor.getPitchAngle());
+//			System.out.println(tiltSensor.getPitchAngle());
 
 			// maintainUpAngle.maintainUp();
 

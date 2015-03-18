@@ -35,7 +35,7 @@ public class TiltSensor {
 
 	public void calcAngle() throws PhidgetException {
 		double accX = spatial.getAcceleration(0);
-		double velocity = getPitchVelocity();
+		double velocity = -getPitchVelocity();
 		
 
 		long time = System.nanoTime();
@@ -51,7 +51,7 @@ public class TiltSensor {
 			accX = 0;
 		}
 
-		double newAngle = -Math.toDegrees(Math.asin(accX));
+		double newAngle = Math.toDegrees(Math.asin(accX));
 
 		pitchAngle = kalman.getAngle(newAngle, velocity, dt);
 

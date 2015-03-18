@@ -101,6 +101,6 @@ public class TiltPID {
 	}
 
 	public String getSettings() {
-		return String.format("kP:%1.5f, kI:%1.5f, v:%1.5f, d:%d", kP, kI, velocityScale, maxDistance);
+		return String.format("kP:%1.9f, kI:%1.9f, v:%1.9f, d:%d", kP, kI, velocityScale, maxDistance);
 	}
 }

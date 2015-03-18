@@ -45,6 +45,8 @@ public class BalanceLogic {
 
 		final long MAX_WANT_POS_OFFSET = 1050;
 
+//		System.out.println("v: " + velocity);
+		
 		if (wantPosOffset > MAX_WANT_POS_OFFSET) {
 			wantPosOffset = MAX_WANT_POS_OFFSET;
 		} else if (wantPosOffset < -MAX_WANT_POS_OFFSET) {
