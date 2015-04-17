@@ -92,7 +92,7 @@ public class ColeBotTest implements ControllerListener, EventListener {
 		logAppender = LogAppender.construct(controller);
 		LOGGER.addAppender(logAppender);
 
-		leftWheel = new Wheel(298807, true, 0);
+		leftWheel = new Wheel(298807, false, 0);
 		rightWheel = new Wheel(298806, true, 0);
 		wheels = new Wheels(leftWheel, rightWheel, 200, 2000, 100);
 
@@ -138,7 +138,7 @@ public class ColeBotTest implements ControllerListener, EventListener {
 		//kP:2.00000, kD:0.30000, kV:0.06000, kE:0.00000
 		//kP:2.00000, kD:0.30000, kV:0.06200, kE:0.00000
 		//kP:2.00000, kD:0.35000, kV:0.06200, kE:0.00500
-		balanceLogic = new BalanceLogic(2, .35, .062, .005, 100);
+		balanceLogic = new BalanceLogic(2, .35, .062, .006, 100);
 		resetLogic = new ResetLogic(40, 100, 1000, 1000);
 
 		tiltSensor = new TiltSensor();
